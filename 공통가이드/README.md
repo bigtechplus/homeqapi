@@ -225,17 +225,6 @@ try {
 
 ### Http Response
 
-| 구분     | 이름            | 타입      |  필수  | 설명                                       |
-| :----- | ------------- | ------- | :--: | ---------------------------------------- |
-| Header | Content-Type  | Text    |  O   | - application/json;charset=UTF-8<br />- application/octet-stream |
-| Body   | trace_id      | Text    |  X   | 디버깅 및 오류추적에 사용되는 ID                      |
-| ^^     | request_time  | Numeric |  X   | 서버수신시간 (단위: ms)                          |
-|        | response_time | Numeric |  X   | 서버수신시간 (단위: ms)                          |
-|        | elapsed_time  | Numeric |  X   | 소요시간(단위:ms) = request_time - response_time |
-|        | error_code    | Text    |  O   | 결과코드<br />- S000: 성공<br />- F999: 예외 처리 되지 않은 오류 |
-|        | error_message | Text    |  O   | 오류메시지                                    |
-|        | data          | Object  |  O   | 결과데이터                                    |
-
 <table style="border: 2px;">
   <tr>
     <th>구분</th>
