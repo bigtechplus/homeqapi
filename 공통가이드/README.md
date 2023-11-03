@@ -13,6 +13,16 @@
 
 ## 공통
 
+### HTTP Request Header
+
+| 이름                     | 타입   | 필수   | 설명                                       |
+| :--------------------- | :--- | ---- | ---------------------------------------- |
+| **x_btp_timestamp**    | Text | O    | - 1970년 1월 1일 00:00:00 협정 세계시(UTC)부터의 경과 시간을 밀리초(Millisecond)로 나타낸 것<br />- API 서버와 300,000ms 이상 차이가 나는 경우 Http Status Code 401 반환 |
+| **x-btp-access-key**   | Text | O    | - 사용자 포털에서 발급받거나 담당자로 부터 전달받은 Access Key ID |
+| **x-btp-signature-v1** | Text | O    | - Access Key ID의 Secret Key로 암호화한 서명값 - HMAC 인증 |
+
+</br></br>
+
 ### 인증키 발급
 
 - #### Signature 생성
@@ -193,16 +203,6 @@ try {
 
 
 
-
-
-<br/><br/>
-### HTTP Request Header
-
-| 이름                     | 타입   | 필수   | 설명                                       |
-| :--------------------- | :--- | ---- | ---------------------------------------- |
-| **x_btp_timestamp**    | Text | O    | - 1970년 1월 1일 00:00:00 협정 세계시(UTC)부터의 경과 시간을 밀리초(Millisecond)로 나타낸 것<br />- API 서버와 300,000ms 이상 차이가 나는 경우 Http Status Code 401 반환 |
-| **x-btp-access-key**   | Text | O    | - 사용자 포털에서 발급받거나 담당자로 부터 전달받은 Access Key ID |
-| **x-btp-signature-v1** | Text | O    | - Access Key ID의 Secret Key로 암호화한 서명값 - HMAC 인증 |
 
 <br/><br/>
 
