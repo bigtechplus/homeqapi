@@ -1,14 +1,27 @@
-# BigTechPlus API Service
-
-
-
-
-## 개요
-
-홈큐 Developers에서 제공하는 서비스와 솔루션을 효과적으로 이용할 수 있도록 API(Application Program Interface, 응용 프로그램 인터페이스)를 제공하고 있습니다. 
-원하는 데이터에 따라 파라미터 값을 입력하고 조회 기능을 이용할 수 있습니다. RESTful API 방식으로 제공되며 JSON 형식으로 응답합니다.
+# BigTechPlus API Service Guide
 
 <br/>
+
+### 문서 이력
+
+| 버전    | 변경일        | 작업자  | 변경내역 |
+| ----- | ---------- | ---- | ---- |
+| 1.0.0 | 2023-07-12 | 박종승  | 최초작성 |
+| 1.0.1 | 2023-10-13 | 홍민지  | 인증변경 |
+
+<br/>
+
+## 공통
+
+### HTTP Request Header
+
+| 이름                     | 타입   | 필수   | 설명                                       |
+| :--------------------- | :--- | ---- | ---------------------------------------- |
+| **x_btp_timestamp**    | Text | O    | - 1970년 1월 1일 00:00:00 협정 세계시(UTC)부터의 경과 시간을 밀리초(Millisecond)로 나타낸 것<br />- API 서버와 300,000ms 이상 차이가 나는 경우 Http Status Code 401 반환 |
+| **x-btp-access-key**   | Text | O    | - 사용자 포털에서 발급받거나 담당자로 부터 전달받은 Access Key ID |
+| **x-btp-signature-v1** | Text | O    | - Access Key ID의 Secret Key로 암호화한 서명값 - HMAC 인증 |
+
+</br></br>
 
 ### 인증키 발급
 
@@ -186,9 +199,6 @@ try {
   console.error(e);
 }
 ```
-
-
-
 
 
 
