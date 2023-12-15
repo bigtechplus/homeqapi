@@ -3,7 +3,7 @@ BigTechPlus API Service Guide
 ===========
 
 
-## KB 시세
+## 시세
 
 
 ### API 목록
@@ -17,6 +17,7 @@ BigTechPlus API Service Guide
 * ##### [시세 이력 조회](#T010006-시세-이력-조회-목록)
 * ##### [시세 통계 조회](#T010007-시세-통계-조회-목록)
 * ##### [KB단지 대장 매핑 조회](#T010008-KB단지-대장-매핑-조회-목록)
+* ##### [부동산등기 종합가격정보 조회](#T010009-부동산등기-종합가격정보-조회-목록)
 
 
 ---
@@ -1273,6 +1274,149 @@ $ curl -v --request POST \
 }
 ```
 
+</br>
+### T010009. 부동산등기 종합가격정보 조회 [[목록]](#API-목록)
+
+부동산등기 고유번호로 종합가격정보 조회 API
+
+> **POST** https://api.homeq.kr/rest/v1/real-estate/price/t010009
+
+</br>
+
+- #### HTTP Request Body
+
+| 이름     | 타입   | 필수   | 설명         | 비고                  |
+| :----- | :--- | :--- | :--------- | ------------------- |
+| reg_pk | Text | O    | 부동산등기 고유번호 | 예) 1141-2023-002311 |
+
+
+
+- #### HTTP Response Body Data
+
+| 이름                           | 타입      | 설명                 | 비고     |
+| ---------------------------- | ------- | :----------------- | ------ |
+| pub_base_ymd                 | Text    | 공시가격 기준일자          |        |
+| pub_prc                      | Numeric | 공시가격(원)            |        |
+| kb_base_ymd                  | Text    | KB시세 기준일자          |        |
+| kb_deal_prc_min              | Numeric | KB시세 매매하한가(만원)     |        |
+| kb_deal_prc                  | Numeric | KB시세 일반매매가(만원)     |        |
+| kb_deal_prc_max              | Numeric | KB시세 매매상한가(만원)     |        |
+| kb_wrnt_prc_min              | Numeric | KB시세 전세하한가(만원)     |        |
+| kb_wrnt_prc                  | Numeric | KB시세 일반전세가(만원)     |        |
+| kb_wrnt_prc_max              | Numeric | KB시세 전세상한가(만원)     |        |
+| kb_rent_prc_min              | Numeric | KB시세 월세최저금액(만원)    |        |
+| kb_rent_prc_max              | Numeric | KB시세 월세최고금액(만원)    |        |
+| real_deal_trd_ymd            | Text    | 최근 실거래가 매매 신고일자    |        |
+| real_deal_prc                | Numeric | 최근 실거래가 매매가(만원)    |        |
+| real_deal_flr                | Numeric | 최근 실거래가 매매거래 층     |        |
+| real_rent_trd_ymd            | Text    | 최근 실거래가 전세 신고일자    |        |
+| real_wrnt_prc                | Numeric | 최근 실거래가 전세가(만원)    |        |
+| real_rent_flr                | Numeric | 최근 실거래가 전세거래 층     |        |
+| article_deal_prc_min         | Numeric | 네이버 매물 최저 매매호가(만원) | 최근 3개월 |
+| article_deal_prc_max         | Numeric | 네이버 매물 최고 매매호가(만원) | 최근 3개월 |
+| article_wrnt_prc_min         | Numeric | 네이버 매물 최저 전세호가(만원) | 최근 3개월 |
+| article_wrnt_prc_max         | Numeric | 네이버 매물 최고 전세호가(만원) | 최근 3개월 |
+| real_price_list              | Array   | 실거래가 정보            |        |
+| real_price_list.trd_typ      | Text    | 거래구분               |        |
+| real_price_list.trd_typ_nm   | Text    | 거래구분명              |        |
+| real_price_list.trd_state    | Text    | 거래상태               |        |
+| real_price_list.trd_state_nm | Text    | 거래상태명              |        |
+| real_price_list.exps_arsz    | Numeric | 전용면적               |        |
+| real_price_list.trd_ymd      | Text    | 실거래신고일자            |        |
+| real_price_list.deal_prc     | Numeric | 매매가                |        |
+| real_price_list.wrnt_prc     | Numeric | 전월세보증금             |        |
+| real_price_list.rent_prc     | Numeric | 월세                 |        |
+| real_price_list.flr          | Numeric | 거래층                |        |
+| real_price_list.pre_deal_prc | Numeric | 변경전 매매가            |        |
+| real_price_list.pre_wrnt_prc | Numeric | 변경전 전월세보증금         |        |
+| real_price_list.pre_rent_prc | Numeric | 변경전 월세             |        |
+| real_price_list.cancel_ymd   | Text    | 거래취소신고일자           |        |
+| real_price_list.tx_cls_nm    | Text    | 직/중개 구분            |        |
+| real_price_list.realtor_loc  | Text    | 중개사소재지             |        |
+| real_price_list.cntrct_term  | Text    | 전월세계약기간            |        |
+| real_price_list.cntrct_cls   | Text    | 계약구분               |        |
+| real_price_list.rnw_rgt_use  | Text    | 갱신청구권사용여부          |        |
+| real_price_list.bfr_wrnt_prc | Numeric | 재계약전 전월세보증금        |        |
+| real_price_list.bfr_rent_prc | Numeric | 재계약전 월세            |        |
+
+
+
+- _요청예제 (cURL)_
+
+```bash
+$ curl -v --request POST \
+  --header "Content-Type: application/json" \
+  --header "x-btp-timestamp: {timestamp}" \
+  --header "x-btp-access-key: {accessKey}" \
+  --header "x-btp-secret-key: {signature}" \
+  --data '{"reg_pk":"1141-2023-002311"}'
+  'https://api.homeq.kr/rest/v1/real-estate/price/t010009'
+
+```
+
+- _응답예제 (JSON)_
+
+```json
+{
+    "trace_id": "1702607514755CUG1RMv",
+    "request_time": 1702607514755,
+    "response_time": 1702607520873,
+    "elapsed_time": 6118,
+    "error_code": "S000",
+    "error_message": "성공",
+    "data": {
+        "pub_base_ymd": "20220101",
+        "pub_prc": 1595000000,
+        "kb_base_ymd": "20231211",
+        "kb_deal_prc_min": 218000,
+        "kb_deal_prc": 228000,
+        "kb_deal_prc_max": 238000,
+        "kb_wrnt_prc_min": 106500,
+        "kb_wrnt_prc": 113000,
+        "kb_wrnt_prc_max": 119000,
+        "kb_rent_prc_min": 360,
+        "kb_rent_prc_max": 375,
+        "real_deal_trd_ymd": "20231125",
+        "real_deal_prc": 225000,
+        "real_deal_flr": 9,
+        "real_rent_trd_ymd": "20231211",
+        "real_wrnt_prc": 40000,
+        "real_rent_flr": 24,
+        "article_deal_prc_min": 205000,
+        "article_deal_prc_max": 250000,
+        "article_wrnt_prc_min": 85000,
+        "article_wrnt_prc_max": 225000,
+        "real_price_list": [
+            {
+                "trd_typ": "2",
+                "trd_typ_nm": "전세",
+                "trd_state": "1",
+                "trd_state_nm": "일반거래신고",
+                "exps_arsz": 84.8300,
+                "trd_ymd": "20231211",
+                "deal_prc": -1,
+                "wrnt_prc": 40000,
+                "rent_prc": 0,
+                "flr": 24,
+                "pre_deal_prc": -1,
+                "pre_wrnt_prc": -1,
+                "pre_rent_prc": -1,
+                "cancel_ymd": "        ",
+                "tx_cls_nm": "",
+                "realtor_loc": "",
+                "cntrct_term": "202401~202601",
+                "cntrct_cls": "신규",
+                "rnw_rgt_use": "",
+                "bfr_wrnt_prc": -1,
+                "bfr_rent_prc": -1
+            },
+            ...
+        ]
+    }
+}
+```
+
+</br>
 #### 
 
 #### 
