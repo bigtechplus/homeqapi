@@ -1100,10 +1100,10 @@ $ curl -v --request POST \
 
 | 이름                   | 타입      | 필수   | 설명       | 비고                                       |
 | :------------------- | :------ | :--- | :------- | ---------------------------------------- |
-| work_type            | Numeric | O    | 업무 구분    | 결과는 1,000건 씩 조회(5.제외)<br />1:전체 단지 건수 조회<br/>2.단지번호 기준 조회<br/>3:기준일 이후 변경건 조회 <br/> |
+| work_type            | Numeric | O    | 업무 구분    | 1:전체 단지 건수 조회<br/>2.단지번호 기준 조회<br/>3:기준일 이후 변경건 조회 <br/>4:단지 건수 <br/> |
 | base_dt              | Text    | △    | 기준일시     | work_type=3의 경우 필수<br />YYYY-MM-DD hh:mi:ss <br />예) 2023-09-20 14:10:10 |
-| kb_complx_no         | Numeric | △    | KB단지일련번호 | work_type=2의 경우 <br />둘중 한 개는 필수입력<br/>예) 40395 |
-| kb_object_identifier | Text    | △    | KB물건식별자  | work_type=2의 경우 <br />둘중 한 개는 필수입력<br/>예) KBA031841 |
+| kb_complx_no         | Numeric | △    | KB단지일련번호 | work_type=2,3의 경우 <br />둘중 한 개는 필수입력<br/>예) 40395 |
+| kb_object_identifier | Text    | △    | KB물건식별자  | work_type=2,3의 경우 <br />둘중 한 개는 필수입력<br/>예) KBA031841 |
 
 
 
