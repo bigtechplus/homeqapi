@@ -1294,51 +1294,85 @@ $ curl -v --request POST \
 
 - #### HTTP Response Body Data
 
-| 이름                           | 타입      | 설명                 | 비고     |
-| ---------------------------- | ------- | :----------------- | ------ |
-| pub_base_ymd                 | Text    | 공시가격 기준일자          |        |
-| pub_prc                      | Numeric | 공시가격(원)            |        |
-| kb_base_ymd                  | Text    | KB시세 기준일자          |        |
-| kb_deal_prc_min              | Numeric | KB시세 매매하한가(만원)     |        |
-| kb_deal_prc                  | Numeric | KB시세 일반매매가(만원)     |        |
-| kb_deal_prc_max              | Numeric | KB시세 매매상한가(만원)     |        |
-| kb_wrnt_prc_min              | Numeric | KB시세 전세하한가(만원)     |        |
-| kb_wrnt_prc                  | Numeric | KB시세 일반전세가(만원)     |        |
-| kb_wrnt_prc_max              | Numeric | KB시세 전세상한가(만원)     |        |
-| kb_rent_prc_min              | Numeric | KB시세 월세최저금액(만원)    |        |
-| kb_rent_prc_max              | Numeric | KB시세 월세최고금액(만원)    |        |
-| real_deal_trd_ymd            | Text    | 최근 실거래가 매매 신고일자    |        |
-| real_deal_prc                | Numeric | 최근 실거래가 매매가(만원)    |        |
-| real_deal_flr                | Numeric | 최근 실거래가 매매거래 층     |        |
-| real_rent_trd_ymd            | Text    | 최근 실거래가 전세 신고일자    |        |
-| real_wrnt_prc                | Numeric | 최근 실거래가 전세가(만원)    |        |
-| real_rent_flr                | Numeric | 최근 실거래가 전세거래 층     |        |
-| article_deal_prc_min         | Numeric | 네이버 매물 최저 매매호가(만원) | 최근 3개월 |
-| article_deal_prc_max         | Numeric | 네이버 매물 최고 매매호가(만원) | 최근 3개월 |
-| article_wrnt_prc_min         | Numeric | 네이버 매물 최저 전세호가(만원) | 최근 3개월 |
-| article_wrnt_prc_max         | Numeric | 네이버 매물 최고 전세호가(만원) | 최근 3개월 |
-| real_price_list              | Array   | 실거래가 정보            |        |
-| real_price_list.trd_typ      | Text    | 거래구분               |        |
-| real_price_list.trd_typ_nm   | Text    | 거래구분명              |        |
-| real_price_list.trd_state    | Text    | 거래상태               |        |
-| real_price_list.trd_state_nm | Text    | 거래상태명              |        |
-| real_price_list.exps_arsz    | Numeric | 전용면적               |        |
-| real_price_list.trd_ymd      | Text    | 실거래신고일자            |        |
-| real_price_list.deal_prc     | Numeric | 매매가                |        |
-| real_price_list.wrnt_prc     | Numeric | 전월세보증금             |        |
-| real_price_list.rent_prc     | Numeric | 월세                 |        |
-| real_price_list.flr          | Numeric | 거래층                |        |
-| real_price_list.pre_deal_prc | Numeric | 변경전 매매가            |        |
-| real_price_list.pre_wrnt_prc | Numeric | 변경전 전월세보증금         |        |
-| real_price_list.pre_rent_prc | Numeric | 변경전 월세             |        |
-| real_price_list.cancel_ymd   | Text    | 거래취소신고일자           |        |
-| real_price_list.tx_cls_nm    | Text    | 직/중개 구분            |        |
-| real_price_list.realtor_loc  | Text    | 중개사소재지             |        |
-| real_price_list.cntrct_term  | Text    | 전월세계약기간            |        |
-| real_price_list.cntrct_cls   | Text    | 계약구분               |        |
-| real_price_list.rnw_rgt_use  | Text    | 갱신청구권사용여부          |        |
-| real_price_list.bfr_wrnt_prc | Numeric | 재계약전 전월세보증금        |        |
-| real_price_list.bfr_rent_prc | Numeric | 재계약전 월세            |        |
+| 이름                                       | 타입      | 설명                 | 비고   |
+| ---------------------------------------- | ------- | :----------------- | ---- |
+| house_cls_nm                             | Text    | 부동산구분              |      |
+| house_address                            | Text    | 소재지주소              |      |
+| pub_prc_info                             | Object  | 공시가격 정보            |      |
+| pub_prc_info.pub_base_YY                 | Text    | 기준연도               |      |
+| pub_prc_info.priv_area                   | Text    | 면적                 |      |
+| pub_prc_info.bld_nm                      | Text    | 건물명                |      |
+| pub_prc_info.dong_nm                     | Text    | 동명                 |      |
+| pub_prc_info.ho_nm                       | Text    | 호명                 |      |
+| pub_prc_info.pub_prc                     | Numeric | 주택가격               |      |
+| pub_prc_info.pub_prc_1year               | Numeric | 1년전주택가격            |      |
+| pub_prc_info.pub_prc_2year               | Numeric | 2년전주택가격            |      |
+| pub_prc_info.pub_prc_3year               | Numeric | 3년전주택가격            |      |
+| kb_prc_info                              | Object  | KB시세 정보            |      |
+| kb_prc_info.kb_base_ymd                  | Text    | 기준일자               |      |
+| kb_prc_info.area_number                  | Text    | 평형                 |      |
+| kb_prc_info.area_name                    | Text    | 평형구분               |      |
+| kb_prc_info.kb_deal_prc_min              | Numeric | KB시세 매매하한가(만원)     |      |
+| kb_prc_info.kb_deal_prc                  | Numeric | KB시세 일반매매가(만원)     |      |
+| kb_prc_info.kb_deal_prc_max              | Numeric | KB시세 매매상한가(만원)     |      |
+| kb_prc_info.kb_wrnt_prc_min              | Numeric | KB시세 전세하한가(만원)     |      |
+| kb_prc_info.kb_wrnt_prc                  | Numeric | KB시세 일반전세가(만원)     |      |
+| kb_prc_info.kb_wrnt_prc_max              | Numeric | KB시세 전세상한가(만원)     |      |
+| kb_prc_info.kb_rent_prc_min              | Numeric | KB시세 월세최저금액(만원)    |      |
+| kb_prc_info.kb_rent_prc_max              | Numeric | KB시세 월세최고금액(만원)    |      |
+| kb_prc_info.household_count              | Numeric | 세대수                |      |
+| kb_prc_info.room_count                   | Numeric | 방개수                |      |
+| kb_prc_info.bathroom_count               | Numeric | 욕실수                |      |
+| naver_article_prc_info                   | Object  | 네이버 매물 평균 호가       |      |
+| naver_article_prc_info.base_dt           | Text    | 기준일자               |      |
+| naver_article_prc_info.article_deal_prc_min | Numeric | 네이버 매물 최저 매매호가(만원) |      |
+| naver_article_prc_info.article_deal_prc_max | Numeric | 네이버 매물 최고 매매호가(만원) |      |
+| naver_article_prc_info.article_wrnt_prc_min | Numeric | 네이버 매물 최저 전세호가(만원) |      |
+| naver_article_prc_info.article_wrnt_prc_max | Numeric | 네이버 매물 최고 전세호가(만원) |      |
+| real_prc_list                            | Array   | 실거래가 정보            |      |
+| real_prc_list.trd_typ                    | Text    | 거래구분코드             |      |
+| real_prc_list.trd_typ_nm                 | Text    | 거래구분명              |      |
+| real_prc_list.trd_state                  | Text    | 거래상태코드             |      |
+| real_prc_list.trd_state_nm               | Text    | 거래상태명              |      |
+| real_prc_list.bld_nm                     | Text    | 건물명                |      |
+| real_prc_list.exps_arsz                  | Numeric | 전용면적               |      |
+| real_prc_list.trd_ymd                    | Text    | 실거래신고일자            |      |
+| real_prc_list.deal_prc                   | Numeric | 매매가                |      |
+| real_prc_list.wrnt_prc                   | Numeric | 전월세보증금             |      |
+| real_prc_list.rent_prc                   | Numeric | 월세                 |      |
+| real_prc_list.flr                        | Numeric | 거래층                |      |
+| real_prc_list.cnstrct_yy                 | Text    | 건축년도               |      |
+| real_prc_list.trd_cnt                    | Numeric | 거래건수               |      |
+| real_prc_list.pre_deal_prc               | Numeric | 변경전 매매가            |      |
+| real_prc_list.pre_wrnt_prc               | Numeric | 변경전 전월세보증금         |      |
+| real_prc_list.pre_rent_prc               | Numeric | 변경전 월세             |      |
+| real_prc_list.cancel_ymd                 | Text    | 거래취소신고일자           |      |
+| real_prc_list.tx_cls_nm                  | Text    | 직/중개 구분            |      |
+| real_prc_list.realtor_loc                | Text    | 중개사소재지             |      |
+| real_prc_list.cntrct_term                | Text    | 전월세계약기간            |      |
+| real_prc_list.cntrct_cls                 | Text    | 계약구분               |      |
+| real_prc_list.rnw_rgt_use                | Text    | 갱신청구권사용여부          |      |
+| real_prc_list.bfr_wrnt_prc               | Numeric | 재계약전 전월세보증금        |      |
+| real_prc_list.bfr_rent_prc               | Numeric | 재계약전 월세            |      |
+| kb_apt_info                              | Object  | KB아파트 단지 정보        |      |
+| kb_apt_info.kb_object_identifier         | Text    | KB아파트코드            |      |
+| kb_apt_info.complex_name                 | Text    | 아파트명               |      |
+| kb_apt_info.high_floor                   | Numeric | 단지내최고층수            |      |
+| kb_apt_info.low_floor                    | Numeric | 단지내최저층수            |      |
+| kb_apt_info.completion_year_month        | Text    | 준공년월               |      |
+| kb_apt_info.occupancy_year_month         | Text    | 입주년월               |      |
+| kb_apt_info.heat_method_type             | Text    | 난방방식구분             |      |
+| kb_apt_info.heat_fuel_type               | Text    | 난방연료구분             |      |
+| kb_apt_info.total_household_count        | Numeric | 총세대수               |      |
+| kb_apt_info.total_dong_count             | Numeric | 총동수                |      |
+| kb_apt_info.parking_count                | Numeric | 주차대수               |      |
+| kb_apt_info.is_sale_ticket               | Text    | 아파트시세상태구분          |      |
+| kb_apt_info.is_commercial_complex        | Text    | 주상복합여부             |      |
+| kb_apt_info.is_villa                     | Text    | 빌라연립여부             |      |
+| kb_apt_info.is_remodeling                | Text    | 시세건축구분             |      |
+| kb_apt_info.zip_code                     | Text    | 우편번호               |      |
+| kb_apt_info.office_phone_no              | Text    | 관리사무소전화번호          |      |
+
 
 
 
@@ -1366,27 +1400,42 @@ $ curl -v --request POST \
     "error_code": "S000",
     "error_message": "성공",
     "data": {
-        "pub_base_ymd": "20220101",
-        "pub_prc": 1595000000,
-        "kb_base_ymd": "20231211",
-        "kb_deal_prc_min": 218000,
-        "kb_deal_prc": 228000,
-        "kb_deal_prc_max": 238000,
-        "kb_wrnt_prc_min": 106500,
-        "kb_wrnt_prc": 113000,
-        "kb_wrnt_prc_max": 119000,
-        "kb_rent_prc_min": 360,
-        "kb_rent_prc_max": 375,
-        "real_deal_trd_ymd": "20231125",
-        "real_deal_prc": 225000,
-        "real_deal_flr": 9,
-        "real_rent_trd_ymd": "20231211",
-        "real_wrnt_prc": 40000,
-        "real_rent_flr": 24,
-        "article_deal_prc_min": 205000,
-        "article_deal_prc_max": 250000,
-        "article_wrnt_prc_min": 85000,
-        "article_wrnt_prc_max": 225000,
+        "house_cls_nm": "집합건물",
+        "house_address": "서울특별시 송파구 잠실로 62, 345동 301호 (잠실동 35, 트리지움)",
+        "pub_prc_info": {
+            "pub_base_YY": "2023",
+            "priv_area": "84.83",
+            "bld_nm": "트리지움",
+            "dong_nm": "345",
+            "ho_nm": "301",
+            "pub_prc": 1206000000,
+            "pub_prc_1year": 1595000000,
+            "pub_prc_2year": 1397000000,
+            "pub_prc_3year": 1181000000
+        },
+        "kb_prc_info": {
+            "kb_base_ymd": "20240226",
+            "area_number": "33",
+            "area_name": "",
+            "kb_deal_prc_min": 216000,
+            "kb_deal_prc": 224500,
+            "kb_deal_prc_max": 234000,
+            "kb_wrnt_prc_min": 106500,
+            "kb_wrnt_prc": 113000,
+            "kb_wrnt_prc_max": 119000,
+            "kb_rent_prc_min": 360,
+            "kb_rent_prc_max": 375,
+            "household_count": 1404,
+            "room_count": 3,
+            "bathroom_count": 2
+        },
+        "naver_article_prc_info": {
+            "base_dt": "20240304",
+            "article_deal_prc_min": 203000,
+            "article_deal_prc_max": 250000,
+            "article_wrnt_prc_min": 98398,
+            "article_wrnt_prc_max": 125000
+        },
         "real_price_list": [
             {
                 "trd_typ": "2",
@@ -1410,9 +1459,28 @@ $ curl -v --request POST \
                 "rnw_rgt_use": "",
                 "bfr_wrnt_prc": -1,
                 "bfr_rent_prc": -1
-            },
+            }
             ...
-        ]
+        ],
+        "kb_apt_info": {
+            "kb_object_identifier": "KBA011025",
+            "complex_name": "트리지움",
+            "high_floor": 32,
+            "low_floor": 19,
+            "completion_year_month": "200708",
+            "occupancy_year_month": "200708",
+            "heat_method_type": "지역",
+            "heat_fuel_type": "열병합",
+            "total_household_count": 3696,
+            "total_dong_count": 46,
+            "parking_count": 4900,
+            "is_sale_ticket": "F",
+            "is_commercial_complex": "F",
+            "is_villa": "F",
+            "is_remodeling": "F",
+            "zip_code": "05555",
+            "office_phone_no": "02-424-9154"
+        }
     }
 }
 ```
