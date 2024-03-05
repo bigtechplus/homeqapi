@@ -257,7 +257,7 @@ $ curl -v --request POST \
 
 ### T010002. 부동산 소유 목록 조회 [[목록]](#API-목록)
 
-개인정보(이름, 생년월일)로 부동산 소육 목록을 확인
+개인정보(이름, 생년월일)로 부동산 소유 목록을 확인
 
 > **POST** https://api.homeq.kr/rest/v1/real-estate/estate/t010002
 
