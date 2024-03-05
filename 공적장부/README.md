@@ -51,7 +51,7 @@ $ curl -v --request POST \
   --header "Content-Type: application/json" \
   --header "x-btp-timestamp: {timestamp}" \
   --header "x-btp-access-key: {accessKey}" \
-  --header "x-btp-secret-key: {signature}" \
+  --header "x-btp-signature-v1: {signature}" \
   --data '{
             "reg_no": "2241-2014-003375",
             "issue_reason": "B",
@@ -125,7 +125,7 @@ $ curl -v --request POST \
   --header "Content-Type: application/json" \
   --header "x-btp-timestamp: {timestamp}" \
   --header "x-btp-access-key: {accessKey}" \
-  --header "x-btp-secret-key: {signature}" \
+  --header "x-btp-signature-v1: {signature}" \
   --data '{
             "apply_code": "f7e76659f3031997c76446bde06b981f",
             "incl_pdf": "1",
@@ -205,7 +205,7 @@ $ curl -v --request POST \
   --header "Content-Type: application/json" \
   --header "x-btp-timestamp: {timestamp}" \
   --header "x-btp-access-key: {accessKey}" \
-  --header "x-btp-secret-key: {signature}" \
+  --header "x-btp-signature-v1: {signature}" \
   --data '{
             "apply_code": "f7e76659f3031997c76446bde06b981f"
   		}'
@@ -543,3 +543,4 @@ $ curl -v --request POST \
 | chg_del_info    | Text    | 100  | 변경/소멸 내용       |      |
 | is_chg_del      | Text    | 1    | 변경/소멸 여부       |      |
 
+`

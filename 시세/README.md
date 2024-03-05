@@ -82,7 +82,7 @@ $ curl -v --request POST \
   --header "Content-Type: application/json" \
   --header "x-btp-timestamp: {timestamp}" \
   --header "x-btp-access-key: {accessKey}" \
-  --header "x-btp-secret-key: {signature}" \
+  --header "x-btp-signature-v1: {signature}" \
   --data '{"addr":"서울특별시 관악구 봉천로 545"}'
   'https://api.homeq.kr/rest/v1/real-estate/price/t010000'
 
@@ -189,7 +189,7 @@ $ curl -v --request POST \
   --header "Content-Type: application/json" \
   --header "x-btp-timestamp: {timestamp}" \
   --header "x-btp-access-key: {accessKey}" \
-  --header "x-btp-secret-key: {signature}" \
+  --header "x-btp-signature-v1: {signature}" \
   --data '{"addr":"경기도 과천시 별양로 164, 706동 403호","lcdong_cd":"4129011000"}'
   'https://api.homeq.kr/rest/v1/real-estate/price/t010002'
 
@@ -990,7 +990,7 @@ $ curl -v --request POST \
   --header "Content-Type: application/json" \
   --header "x-btp-timestamp: {timestamp}" \
   --header "x-btp-access-key: {accessKey}" \
-  --header "x-btp-secret-key: {signature}" \
+  --header "x-btp-signature-v1: {signature}" \
   --data '{"ledg_prp_no":"41290-100195115"}'
   'https://api.homeq.kr/rest/v1/real-estate/price/t010007'
 
@@ -1127,7 +1127,7 @@ $ curl -v --request POST \
   --header "Content-Type: application/json" \
   --header "x-btp-timestamp: {timestamp}" \
   --header "x-btp-access-key: {accessKey}" \
-  --header "x-btp-secret-key: {signature}" \
+  --header "x-btp-signature-v1: {signature}" \
   --data '{"work_type":1}' #work_type=1
   'https://api.homeq.kr/rest/v1/real-estate/price/t010008'
 
@@ -1183,7 +1183,7 @@ $ curl -v --request POST \
   --header "Content-Type: application/json" \
   --header "x-btp-timestamp: {timestamp}" \
   --header "x-btp-access-key: {accessKey}" \
-  --header "x-btp-secret-key: {signature}" \
+  --header "x-btp-signature-v1: {signature}" \
   --data '{"work_type":2,"kb_complx_no":40395}' #work_type=2
   'https://api.homeq.kr/rest/v1/real-estate/price/t010008'
 
@@ -1240,7 +1240,7 @@ $ curl -v --request POST \
   --header "Content-Type: application/json" \
   --header "x-btp-timestamp: {timestamp}" \
   --header "x-btp-access-key: {accessKey}" \
-  --header "x-btp-secret-key: {signature}" \
+  --header "x-btp-signature-v1: {signature}" \
   --data '{"work_type":3,"base_dt":"2023-10-01 14:10:10"}' #work_type=3
   'https://api.homeq.kr/rest/v1/real-estate/price/t010008'
 
@@ -1383,7 +1383,7 @@ $ curl -v --request POST \
   --header "Content-Type: application/json" \
   --header "x-btp-timestamp: {timestamp}" \
   --header "x-btp-access-key: {accessKey}" \
-  --header "x-btp-secret-key: {signature}" \
+  --header "x-btp-signature-v1: {signature}" \
   --data '{"reg_pk":"1141-2023-002311"}'
   'https://api.homeq.kr/rest/v1/real-estate/price/t010009'
 
