@@ -422,7 +422,7 @@ $ curl -v --request POST \
 요청한 `data_tmpl`에 따라 다른 결과가 출력됩니다.
 
 * ##### [data_tmpl = EDT01](#data_tmpl-edt01)
-* ##### [data_tmpl = EDT02](#data_tmpl-edt02-nice-목록)
+* ##### [data_tmpl = EDT02](#data_tmpl-edt02-목록)
 
 ### data_tmpl EDT01
 #### d015100 - 기본정보
