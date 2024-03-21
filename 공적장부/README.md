@@ -422,7 +422,7 @@ $ curl -v --request POST \
 요청한 `data_tmpl`에 따라 다른 결과가 출력됩니다.
 
 * ##### [data_tmpl = EDT01](#data_tmpl-edt01)
-* ##### [data_tmpl = EDT02](#data_tmpl-edt02-nice)
+* ##### [data_tmpl = EDT02](#data_tmpl-edt02-nice-목록)
 
 ### data_tmpl EDT01
 #### d015100 - 기본정보
@@ -1428,7 +1428,7 @@ $ curl -v --request POST \
 | sub_right_person_addr | Text    | 200  | 대위자주소    |      |
 
 
-### data_tmpl = EDT02 (NICE)
+### data_tmpl EDT02 [[목록]](#T010002-부동산등기-분석데이터-상세내용-목록)
 #### d015100 - 기본정보
 
 | 이름                   | 타입      | 길이   | 설명              | 비고   |
