@@ -421,8 +421,8 @@ $ curl -v --request POST \
 공통 데이터를 제외하고 **문서구분** (ex.토지, 건물, 집합건물) 에 해당하는 오브젝트에만 값이 포함됩니다.<br>
 요청한 `data_tmpl`에 따라 다른 결과가 출력됩니다.
 
-* ##### [data_tmpl = EDT01](#data_tmpl-=-EDT01-(BTP))
-* ##### [data_tmpl = EDT02](#data_tmpl-=-EDT02-(NICE))
+* ##### [data_tmpl = EDT01](#data_tmpl-=-EDT01-BTP)
+* ##### [data_tmpl = EDT02](#data_tmpl-=-EDT02-NICE)
 
 ### data_tmpl = EDT01 (BTP)
 #### d015100 - 기본정보
